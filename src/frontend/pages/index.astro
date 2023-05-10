@@ -1,5 +1,15 @@
 ---
+import type { AppRequestDTO, AppResponseDTO } from 'backend/dto/app.dto'
 const a = [1, 2]
+const b: AppRequestDTO = { pagination: { offset: 20, limit: 20 } }
+const response: AppResponseDTO = {
+	totalFound: 1000,
+	items: [{ title: 'someItem', price: 2 }],
+}
+
+const helloFromBackend = await fetch('http://localhost:3001').then((r) =>
+	r.text(),
+)
 ---
 
 <html lang="en">
@@ -11,6 +21,14 @@ const a = [1, 2]
 		<title>Astro</title>
 	</head>
 	<body>
-		<h1>Astro $2</h1>
+		<h1>Astro $2 (and {helloFromBackend} from nest.js)</h1>
+
+		{
+			response.items.map((i) => (
+				<div>
+					{i.title} <b>{i.price}</b>
+				</div>
+			))
+		}
 	</body>
 </html>

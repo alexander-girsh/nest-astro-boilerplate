@@ -21,3 +21,6 @@ pnpm-debug.log*
 
 .idea
 .vscode
+
+
+*.js.map

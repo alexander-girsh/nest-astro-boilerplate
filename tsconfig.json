@@ -1,11 +1,28 @@
 {
   "extends": "astro/tsconfigs/strict",
     "compilerOptions": {
+      "module": "commonjs",
+      "target": "es2022",
+      "declaration": true,
+      "removeComments": true,
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "allowSyntheticDefaultImports": true,
+      "sourceMap": true,
+      "incremental": true,
+      "skipLibCheck": true,
+      "strictNullChecks": false,
+      "noImplicitAny": false,
+      "strictBindCallApply": false,
+      "forceConsistentCasingInFileNames": false,
+      "noFallthroughCasesInSwitch": false,
       "noEmit": false,
       "baseUrl": "./src",
+      "outDir": "./dist",
       "paths": {
         "@": ["."],
         "backend": ["./backend"]
       }
+      
     }
 }
