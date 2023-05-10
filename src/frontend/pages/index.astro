@@ -1,5 +1,5 @@
 ---
-import type { AppRequestDTO, AppResponseDTO } from 'backend/dto/app.dto'
+import { AppRequestDTO, AppResponseDTO } from 'backend/modules/dto/app.dto'
 
 const typedFetch = <
 	REQ_DTO extends Record<string, any>,
@@ -20,7 +20,7 @@ const typedFetch = <
 const exampleResponse = await typedFetch<AppRequestDTO, AppResponseDTO>(
 	`http://localhost:${process.env.BACKEND_PORT}/examplePost`,
 	{ filter: { keyword: 'example' } },
-).catch((e) => e)
+)
 ---
 
 <html lang="en">

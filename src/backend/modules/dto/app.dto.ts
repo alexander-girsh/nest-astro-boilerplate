@@ -1,5 +1,3 @@
-/* example dto's */
-
 export class AppRequestDTO {
 	filter: {
 		keyword: string

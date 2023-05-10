@@ -1,6 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing'
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
+import { DBService } from './database/database.service'
+import { LoggerModule } from 'nestjs-pino'
 
 describe('AppController', () => {
 	let appController: AppController
@@ -9,7 +11,19 @@ describe('AppController', () => {
 		const app: TestingModule = await Test.createTestingModule({
 			controllers: [AppController],
 			providers: [AppService],
-		}).compile()
+			imports: [LoggerModule.forRoot()],
+		})
+			.useMocker((token) => {
+				if (token === DBService) {
+					return {
+						query: jest
+							.fn()
+							.mockResolvedValue({ rows: [{ mockedColumn: 'mockedValue' }] }),
+						execRepeatableTransaction: jest.fn().mockResolvedValue(null),
+					}
+				}
+			})
+			.compile()
 
 		appController = app.get<AppController>(AppController)
 	})

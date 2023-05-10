@@ -1,6 +1,7 @@
 {
   "extends": "astro/tsconfigs/strict",
     "compilerOptions": {
+      "importsNotUsedAsValues": "preserve",
       "module": "commonjs",
       "target": "es2022",
       "declaration": true,
@@ -22,7 +23,11 @@
       "paths": {
         "@": ["."],
         "backend": ["./backend"]
-      }
-      
+      },
+      "plugins": [
+        {
+          "name": "@astrojs/ts-plugin"
+        }
+      ]
     }
 }

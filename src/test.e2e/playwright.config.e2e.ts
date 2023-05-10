@@ -71,8 +71,6 @@ export default defineConfig({
 	/* Run your local dev server before starting the tests */
 	webServer: {
 		command: 'yarn run test:e2e:prepare',
-		url: `http://localhost:${process.env.FRONTEND_PORT}/`,
-		reuseExistingServer: false,
-		timeout: 3 * 1000,
+		port: process.env.BACKEND_PORT as unknown as number,
 	},
 })

@@ -1,14 +1,13 @@
 
 const isProductionLinting = process.env.NODE_ENV === 'production'
 
-console.log({isProductionLinting})
+console.log({isProductionLinting, __dirname})
 
 module.exports = {
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
 		project: ['tsconfig.json'],
 		tsconfigRootDir: __dirname,
-		sourceType: 'module',
 	},
 	plugins: ['@typescript-eslint/eslint-plugin'],
 	extends: [
@@ -69,6 +68,8 @@ module.exports = {
       // Parse the script in `.astro` as TypeScript by adding the following configuration.
       // It's the setting you need when using TypeScript.
       parserOptions: {
+		project: ['tsconfig.json'],
+		tsconfigRootDir: __dirname,
         parser: "@typescript-eslint/parser",
         extraFileExtensions: [".astro"],
       },

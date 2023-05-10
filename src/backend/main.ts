@@ -1,22 +1,17 @@
 import { NestFactory } from '@nestjs/core'
-import { AppModule } from './app.module'
-import DotEnv from 'dotenv'
-import path from 'node:path'
-
-const isProduction = process.env.NODE_ENV === 'production'
-const isTesting = !isProduction && process.env.NODE_ENV === 'test'
-const isDev = !isProduction && !isTesting
-
-DotEnv.config({ path: path.resolve(process.cwd(), '.env/.env.secrets') })
-
-if (isDev) {
-	DotEnv.config({ path: path.resolve(process.cwd(), '.env/.env.dev') })
-} else if (isTesting) {
-	DotEnv.config({ path: path.resolve(process.cwd(), '.env/.env.e2e') })
-}
+import { AppModule } from './modules/app.module'
+import { AppConfig } from './modules/app.config'
+import { Logger, PinoLogger } from 'nestjs-pino'
 
 async function bootstrap() {
-	const app = await NestFactory.create(AppModule)
-	await app.listen(process.env.BACKEND_PORT)
+	const app = await NestFactory.create(AppModule, { bufferLogs: true })
+	app.useLogger(app.get(Logger))
+
+	const appConfig = app.get(AppConfig)
+
+	await app.listen(appConfig.BACKEND_PORT, async () => {
+		const logger = await app.resolve(PinoLogger)
+		logger.info(`listening on :${appConfig.BACKEND_PORT}`)
+	})
 }
 void bootstrap()
