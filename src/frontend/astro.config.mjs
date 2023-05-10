@@ -1,7 +1,6 @@
-import { NestFactory } from '@nestjs/core'
-import { AppModule } from './app.module'
+import { defineConfig } from 'astro/config'
 import DotEnv from 'dotenv'
-import path from 'node:path'
+import path from 'path'
 
 const isProduction = process.env.NODE_ENV === 'production'
 const isTesting = !isProduction && process.env.NODE_ENV === 'test'
@@ -15,8 +14,13 @@ if (isDev) {
 	DotEnv.config({ path: path.resolve(process.cwd(), '.env/.env.e2e') })
 }
 
-async function bootstrap() {
-	const app = await NestFactory.create(AppModule)
-	await app.listen(process.env.BACKEND_PORT)
-}
-void bootstrap()
+// https://astro.build/config
+export default defineConfig({
+	vite: {
+		optimizeDeps: { exclude: ['fsevents'] },
+	},
+	srcDir: 'src/frontend',
+	server: {
+		port: parseInt(process.env.FRONTEND_PORT),
+	},
+})

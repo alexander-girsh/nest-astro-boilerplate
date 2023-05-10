@@ -20,7 +20,7 @@ const typedFetch = <
 const exampleResponse = await typedFetch<AppRequestDTO, AppResponseDTO>(
 	`http://localhost:${process.env.BACKEND_PORT}/examplePost`,
 	{ filter: { keyword: 'example' } },
-)
+).catch((e) => e)
 ---
 
 <html lang="en">
@@ -29,11 +29,11 @@ const exampleResponse = await typedFetch<AppRequestDTO, AppResponseDTO>(
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>Astro + Nest.js example</title>
 	</head>
 	<body>
 		<h1>Astro and nestjs were loaded and</h1>
-		<p>
+		<p id="dynamic-content">
 			"{JSON.stringify(exampleResponse.items)}" and "{
 				JSON.stringify(exampleResponse.applied)
 			}" was fetched as example response from underlying nest.js service

@@ -27,3 +27,7 @@ pnpm-debug.log*
 
 
 .env/.env.secrets
+
+/test-results/
+/playwright-report/
+/playwright/.cache/

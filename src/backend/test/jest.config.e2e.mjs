@@ -1,10 +1,10 @@
 import { pathsToModuleNameMapper } from 'ts-jest'
-import tsconfig from '../../tsconfig.json' assert { type: 'json' }
+import tsconfig from '../../../tsconfig.json' assert { type: 'json' }
 export default {
 	moduleFileExtensions: ['js', 'json', 'ts'],
-	rootDir: '../', // src
+	rootDir: '../../', // src
 	testEnvironment: 'node',
-	testRegex: '.e2e-spec.ts$',
+	testRegex: 'src/backend/(.*)\\.e2e-spec.ts$',
 	transform: {
 		'^.+\\.(t|j)s$': 'ts-jest',
 	},
