@@ -1,6 +1,6 @@
 WHAT IS IT
 ---
-Thats the complex boilerplate which allows to astro (https://astro.build) and nest.js (https://nestjs.com) 
+Thats the complex boilerplate which allows to bootstrap fullstack web applications powered with astro (https://astro.build) and nest.js (https://nestjs.com) 
 
 NOTICE!
 ---
