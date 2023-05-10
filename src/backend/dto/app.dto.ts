@@ -1,13 +1,12 @@
 /* example dto's */
 
 export class AppRequestDTO {
-	pagination: {
-		offset: number
-		limit: number
+	filter: {
+		keyword: string
 	}
 }
 
 export class AppResponseDTO {
-	totalFound: number
-	items: { title: string; price: number }[]
+	items: { title: string }[]
+	applied: AppRequestDTO
 }

@@ -18,5 +18,13 @@ describe('AppController', () => {
 		it('should return "Hello World!"', () => {
 			expect(appController.getHello()).toBe('Hello World!')
 		})
+		it('should return a json', () => {
+			expect(
+				appController.examplePost({ filter: { keyword: '123' } }),
+			).toMatchObject({
+				items: [{ title: '12345' }],
+				applied: { filter: { keyword: '123' } },
+			})
+		})
 	})
 })

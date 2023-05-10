@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing'
 import type { INestApplication } from '@nestjs/common'
-import * as request from 'supertest'
+import request from 'supertest'
 import { AppModule } from 'backend/app.module'
 
 describe('AppController (e2e)', () => {
@@ -15,11 +15,14 @@ describe('AppController (e2e)', () => {
 		await app.init()
 	})
 
-	it('/ (GET)', () => {
-		// @ts-ignore
+	it('/(GET)', () => {
 		return request(app.getHttpServer())
 			.get('/')
 			.expect(200)
 			.expect('Hello World!')
+	})
+
+	it('/examplePost (POST)', () => {
+		return request(app.getHttpServer()).post('/examplePost')
 	})
 })

@@ -1,14 +1,25 @@
 ---
 import type { AppRequestDTO, AppResponseDTO } from 'backend/dto/app.dto'
-const a = [1, 2]
-const b: AppRequestDTO = { pagination: { offset: 20, limit: 20 } }
-const response: AppResponseDTO = {
-	totalFound: 1000,
-	items: [{ title: 'someItem', price: 2 }],
+
+const typedFetch = <
+	REQ_DTO extends Record<string, any>,
+	RES_DTO extends Record<string, any>,
+>(
+	url: string,
+	payload: REQ_DTO,
+): Promise<RES_DTO> => {
+	return fetch(url, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(payload),
+	}).then((r) => r.json())
 }
 
-const helloFromBackend = await fetch('http://localhost:3001').then((r) =>
-	r.text(),
+const exampleResponse = await typedFetch<AppRequestDTO, AppResponseDTO>(
+	`http://localhost:${process.env.BACKEND_PORT}/examplePost`,
+	{ filter: { keyword: 'example' } },
 )
 ---
 
@@ -21,14 +32,11 @@ const helloFromBackend = await fetch('http://localhost:3001').then((r) =>
 		<title>Astro</title>
 	</head>
 	<body>
-		<h1>Astro $2 (and {helloFromBackend} from nest.js)</h1>
-
-		{
-			response.items.map((i) => (
-				<div>
-					{i.title} <b>{i.price}</b>
-				</div>
-			))
-		}
+		<h1>Astro and nestjs were loaded and</h1>
+		<p>
+			"{JSON.stringify(exampleResponse.items)}" and "{
+				JSON.stringify(exampleResponse.applied)
+			}" was fetched as example response from underlying nest.js service
+		</p>
 	</body>
 </html>

@@ -1,6 +1,8 @@
 
 const isProductionLinting = process.env.NODE_ENV === 'production'
 
+console.log({isProductionLinting})
+
 module.exports = {
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
