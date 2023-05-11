@@ -1,6 +1,7 @@
-import { Test, TestingModule } from '@nestjs/testing'
 import { INestApplication } from '@nestjs/common'
+import { Test, TestingModule } from '@nestjs/testing'
 import request from 'supertest'
+
 import { AppModule } from '../modules/app.module.js'
 import { AppService } from '../modules/app.service.js'
 import { DBService } from '../modules/database/database.service.js'

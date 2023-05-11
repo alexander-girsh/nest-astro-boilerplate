@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common'
-import { DBService } from './database/database.service.js'
 import { PinoLogger } from 'nestjs-pino'
+
+import { DBService } from './database/database.service.js'
 
 @Injectable()
 export class AppService {
@@ -16,7 +17,7 @@ export class AppService {
 
 	async checkDBConnection() {
 		await this.dbService
-			.query(`SELECT 1`)
+			.query('SELECT 1')
 			.then((r) => r.rows)
 			.then((r) => this.logger.info(r))
 		return true

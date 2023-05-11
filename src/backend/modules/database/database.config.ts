@@ -1,4 +1,4 @@
-import { IsString, IsInt, IsBoolean, IsDefined } from 'class-validator'
+import { IsBoolean, IsDefined, IsInt, IsString } from 'class-validator'
 
 export class DatabaseConfig {
 	@IsString()

@@ -1,4 +1,4 @@
-import { test, Page, expect } from '@playwright/test'
+import { expect, Page, test } from '@playwright/test'
 test.describe.configure({ mode: 'serial' })
 
 const baseUrl = `http://localhost:${process.env.FRONTEND_PORT}`

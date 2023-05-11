@@ -1,12 +1,14 @@
-import { Module } from '@nestjs/common'
-import { TypedConfigModule, dotenvLoader } from 'nest-typed-config'
-import { LoggerModule } from 'nestjs-pino'
 import path from 'node:path'
+
+import { Module } from '@nestjs/common'
+import { dotenvLoader, TypedConfigModule } from 'nest-typed-config'
+import { LoggerModule } from 'nestjs-pino'
+
+import { AppConfig } from './app.config.js'
 import { AppController } from './app.controller.js'
 import { AppService } from './app.service.js'
-import { DBModule } from './database/database.module.js'
-import { AppConfig } from './app.config.js'
 import { DatabaseConfig } from './database/database.config.js'
+import { DBModule } from './database/database.module.js'
 
 const isProduction = process.env.NODE_ENV === 'production'
 const isTesting = !isProduction && process.env.NODE_ENV === 'test'

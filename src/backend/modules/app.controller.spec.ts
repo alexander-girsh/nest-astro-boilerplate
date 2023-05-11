@@ -1,8 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing'
+import { LoggerModule } from 'nestjs-pino'
+
 import { AppController } from './app.controller.js'
 import { AppService } from './app.service.js'
 import { DBService } from './database/database.service.js'
-import { LoggerModule } from 'nestjs-pino'
 
 describe('AppController', () => {
 	let appController: AppController

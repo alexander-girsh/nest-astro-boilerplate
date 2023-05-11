@@ -1,8 +1,17 @@
 {
   "extends": "astro/tsconfigs/strict",
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.cjs",
+    "./src/**/*.mjs",
+    "./src/**/*.js",
+    "./src/**/*.astro",
+    "./src/**/*.d.ts",
+    ".eslintrc.cjs",
+    "env.d.ts"
+  ],
     "compilerOptions": {
       "importsNotUsedAsValues": "preserve",
-      "module": "ES2022",
       "target": "ES2022",
       "declaration": true,
       "removeComments": true,
@@ -22,6 +31,7 @@
       "outDir": "./dist",
       "allowArbitraryExtensions": true,
       "esModuleInterop": true,
+      "allowJs": true,
       "plugins": [
         {
           "name": "@astrojs/ts-plugin"

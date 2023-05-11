@@ -1,8 +1,9 @@
 import { Injectable, Scope } from '@nestjs/common'
-import PG from 'pg'
 import { PinoLogger } from 'nestjs-pino'
-import createSubscriber from 'pg-listen'
+import PG from 'pg'
 import type { Subscriber } from 'pg-listen'
+import createSubscriber from 'pg-listen'
+
 import { DatabaseConfig } from './database.config.js'
 
 PG.types.setTypeParser(PG.types.builtins.NUMERIC, (value) =>
@@ -10,6 +11,7 @@ PG.types.setTypeParser(PG.types.builtins.NUMERIC, (value) =>
 )
 
 PG.types.setTypeParser(
+	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 	// @ts-ignore
 	PG.types.builtins.BIGINT,
 	(value) => (value === null ? value : +value),
@@ -52,11 +54,7 @@ export class DBService {
 			user: this.config.PG_USERNAME,
 			password: this.config.PG_PASSWORD,
 
-			ssl: this.config.PG_SSL_MODE_OFF
-				? false
-				: {
-						rejectUnauthorized: false,
-				  },
+			ssl: this.config.PG_SSL_MODE_OFF ? false : { rejectUnauthorized: false },
 		}
 	}
 
@@ -64,7 +62,7 @@ export class DBService {
 		this.pool = new PG.Pool(this.poolConfig)
 
 		this.pool.on('error', (err) => {
-			this.logger.error({ err }, `Unexpected error of database connection`)
+			this.logger.error({ err }, 'Unexpected error of database connection')
 
 			this.reconnect()
 		})
@@ -99,7 +97,7 @@ export class DBService {
 		this.pool.emit('connect')
 		this.logger.info(`DB client connected to ${this.config.PG_HOST}`)
 		client.on('error', (err: Error) => {
-			this.logger.error(`DB client disconnected, trying to reconnect...`, {
+			this.logger.error('DB client disconnected, trying to reconnect...', {
 				err,
 			})
 			if (isDatabaseError(err)) {
@@ -119,7 +117,7 @@ export class DBService {
 
 			return await subscriberPayload(subscriber)
 		} catch (err) {
-			this.logger.error({ err }, `addSubscriber() err:`, err)
+			this.logger.error({ err }, 'addSubscriber() err:', err)
 		}
 	}
 
@@ -256,7 +254,7 @@ export class DBService {
 				e.message !==
 					'Release called on client which has already been released to the pool.'
 			) {
-				this.logger.error(`releaseClientSilly() err:`, e)
+				this.logger.error('releaseClientSilly() err:', e)
 				throw e
 			}
 			/** doing nothing */

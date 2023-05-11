@@ -1,4 +1,4 @@
-import { IsDefined, IsNumber, IsPositive, IsInt } from 'class-validator'
+import { IsDefined, IsInt, IsNumber, IsPositive } from 'class-validator'
 
 export class AppConfig {
 	@IsNumber()
