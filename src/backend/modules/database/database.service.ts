@@ -1,9 +1,9 @@
 import { Injectable, Scope } from '@nestjs/common'
 import PG from 'pg'
-import { DatabaseConfig } from './database.config'
 import { PinoLogger } from 'nestjs-pino'
 import createSubscriber from 'pg-listen'
 import type { Subscriber } from 'pg-listen'
+import { DatabaseConfig } from './database.config.js'
 
 PG.types.setTypeParser(PG.types.builtins.NUMERIC, (value) =>
 	value === null ? value : +value,

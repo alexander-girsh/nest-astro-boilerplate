@@ -9,11 +9,14 @@ module.exports = {
 		project: ['tsconfig.json'],
 		tsconfigRootDir: __dirname,
 	},
-	plugins: ['@typescript-eslint/eslint-plugin'],
+	plugins: [
+		'@typescript-eslint/eslint-plugin',
+		'simple-import-sort'
+	],
 	extends: [
 		'plugin:@typescript-eslint/recommended',
 		'plugin:prettier/recommended',
-    "plugin:astro/recommended",
+    	"plugin:astro/recommended",
 	],
 	root: true,
 	env: {
@@ -57,7 +60,9 @@ module.exports = {
 		
 		// TODO: temporary disabled. talk, decide [and enable]
 		'@typescript-eslint/require-await': 'off',
-		'no-var': 'off'
+		'no-var': 'off',
+		"simple-import-sort/imports": isProductionLinting ? "error" : 'off',
+		"simple-import-sort/exports": isProductionLinting ? "error" : 'off'
 	},
   overrides: [
     {

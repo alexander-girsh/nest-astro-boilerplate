@@ -1,15 +1,15 @@
-import { pathsToModuleNameMapper } from 'ts-jest'
-import tsconfig from '../../../tsconfig.json' assert { type: 'json' }
 export default {
+	extensionsToTreatAsEsm: ['.ts'],
+	moduleNameMapper: {
+		'^(\\.{1,2}/.*)\\.js$': '$1',
+	},
 	moduleFileExtensions: ['js', 'json', 'ts'],
 	rootDir: '../../', // src
 	testEnvironment: 'node',
 	testRegex: 'src/backend/(.*)\\.spec.ts$',
 	transform: {
-		'^.+\\.(t|j)s$': 'ts-jest',
+		'^.+\\.(t|j)s$': ['ts-jest', { useESM: true }],
 	},
 	preset: 'ts-jest',
 	testEnvironment: 'node',
-	moduleNameMapper: pathsToModuleNameMapper(tsconfig.compilerOptions.paths),
-	modulePaths: ['<rootDir>'],
 }

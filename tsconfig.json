@@ -2,8 +2,8 @@
   "extends": "astro/tsconfigs/strict",
     "compilerOptions": {
       "importsNotUsedAsValues": "preserve",
-      "module": "commonjs",
-      "target": "es2022",
+      "module": "ES2022",
+      "target": "ES2022",
       "declaration": true,
       "removeComments": true,
       "emitDecoratorMetadata": true,
@@ -20,10 +20,8 @@
       "noEmit": false,
       "baseUrl": "./src",
       "outDir": "./dist",
-      "paths": {
-        "@": ["."],
-        "backend": ["./backend"]
-      },
+      "allowArbitraryExtensions": true,
+      "esModuleInterop": true,
       "plugins": [
         {
           "name": "@astrojs/ts-plugin"

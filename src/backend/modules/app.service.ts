@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common'
-import { DBService } from './database/database.service'
+import { DBService } from './database/database.service.js'
 import { PinoLogger } from 'nestjs-pino'
 
 @Injectable()

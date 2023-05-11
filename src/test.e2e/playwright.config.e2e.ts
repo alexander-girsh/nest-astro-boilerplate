@@ -72,5 +72,6 @@ export default defineConfig({
 	webServer: {
 		command: 'yarn run test:e2e:prepare',
 		port: process.env.BACKEND_PORT as unknown as number,
+		timeout: 3000, // ms
 	},
 })

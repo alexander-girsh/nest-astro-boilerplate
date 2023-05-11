@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body } from '@nestjs/common'
-import { AppService } from './app.service'
-import { AppRequestDTO, AppResponseDTO } from './dto/app.dto'
+import { AppService } from './app.service.js'
+import { AppRequestDTO, AppResponseDTO } from './dto/app.dto.js'
 
 @Controller()
 export class AppController {

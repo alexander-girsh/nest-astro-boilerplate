@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core'
-import { AppModule } from './modules/app.module'
-import { AppConfig } from './modules/app.config'
+import { AppModule } from './modules/app.module.js'
+import { AppConfig } from './modules/app.config.js'
 import { Logger, PinoLogger } from 'nestjs-pino'
 
 async function bootstrap() {

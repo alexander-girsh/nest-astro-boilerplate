@@ -1,11 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing'
 import { INestApplication } from '@nestjs/common'
 import request from 'supertest'
-import { AppModule } from 'backend/modules/app.module'
-import { PinoLogger } from 'nestjs-pino'
-import { DBModule } from 'backend/modules/database/database.module'
-import { AppService } from 'backend/modules/app.service'
-import { DBService } from 'backend/modules/database/database.service'
+import { AppModule } from '../modules/app.module.js'
+import { AppService } from '../modules/app.service.js'
+import { DBService } from '../modules/database/database.service.js'
 
 let app: INestApplication
 let appService: AppService
