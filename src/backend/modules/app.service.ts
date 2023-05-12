@@ -1,7 +1,7 @@
-import { Injectable } from '@nestjs/common'
-import { PinoLogger } from 'nestjs-pino'
+import { Injectable } from '@nestjs/common';
+import { PinoLogger } from 'nestjs-pino';
 
-import { DBService } from './database/database.service.js'
+import { DBService } from './database/database.service.js';
 
 @Injectable()
 export class AppService {
@@ -12,14 +12,14 @@ export class AppService {
 		// dbService and injected logger usage example
 	}
 	getHello(): string {
-		return 'Hello World!'
+		return 'Hello World!';
 	}
 
 	async checkDBConnection() {
 		await this.dbService
 			.query('SELECT 1')
 			.then((r) => r.rows)
-			.then((r) => this.logger.info(r))
-		return true
+			.then((r) => this.logger.info(r));
+		return true;
 	}
 }

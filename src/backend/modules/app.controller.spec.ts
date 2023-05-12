@@ -1,12 +1,12 @@
-import { Test, TestingModule } from '@nestjs/testing'
-import { LoggerModule } from 'nestjs-pino'
+import { Test, TestingModule } from '@nestjs/testing';
+import { LoggerModule } from 'nestjs-pino';
 
-import { AppController } from './app.controller.js'
-import { AppService } from './app.service.js'
-import { DBService } from './database/database.service.js'
+import { AppController } from './app.controller.js';
+import { AppService } from './app.service.js';
+import { DBService } from './database/database.service.js';
 
 describe('AppController', () => {
-	let appController: AppController
+	let appController: AppController;
 
 	beforeEach(async () => {
 		const app: TestingModule = await Test.createTestingModule({
@@ -17,29 +17,31 @@ describe('AppController', () => {
 			.useMocker((token) => {
 				if (token === DBService) {
 					return {
-						query: jest
+						query: jest.fn().mockResolvedValue({
+							rows: [{ mockedColumn: 'mockedValue' }],
+						}),
+						execRepeatableTransaction: jest
 							.fn()
-							.mockResolvedValue({ rows: [{ mockedColumn: 'mockedValue' }] }),
-						execRepeatableTransaction: jest.fn().mockResolvedValue(null),
-					}
+							.mockResolvedValue(null),
+					};
 				}
 			})
-			.compile()
+			.compile();
 
-		appController = app.get<AppController>(AppController)
-	})
+		appController = app.get<AppController>(AppController);
+	});
 
 	describe('root', () => {
 		it('should return "Hello World!"', () => {
-			expect(appController.getHello()).toBe('Hello World!')
-		})
+			expect(appController.getHello()).toBe('Hello World!');
+		});
 		it('should return a json', () => {
 			expect(
 				appController.examplePost({ filter: { keyword: '123' } }),
 			).toMatchObject({
 				items: [{ title: '12345' }],
 				applied: { filter: { keyword: '123' } },
-			})
-		})
-	})
-})
+			});
+		});
+	});
+});

@@ -50,8 +50,6 @@
     "ts-node": "^10.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.21.8",
-    "@babel/eslint-parser": "^7.21.8",
     "@nestjs/cli": "^9.0.0",
     "@playwright/test": "^1.33.0",
     "@types/dotenv": "^8.2.0",

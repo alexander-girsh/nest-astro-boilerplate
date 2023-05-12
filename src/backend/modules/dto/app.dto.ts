@@ -1,10 +1,10 @@
 export class AppRequestDTO {
 	filter: {
-		keyword: string
-	}
+		keyword: string;
+	};
 }
 
 export class AppResponseDTO {
-	items: { title: string }[]
-	applied: AppRequestDTO
+	items: { title: string }[];
+	applied: AppRequestDTO;
 }

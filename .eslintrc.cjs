@@ -1,6 +1,6 @@
-const isProductionLinting = process.env.NODE_ENV === 'production'
+const isProductionLinting = process.env.NODE_ENV === 'production';
 
-console.log({ isProductionLinting })
+console.log({ isProductionLinting });
 
 module.exports = {
 	parser: '@typescript-eslint/parser',
@@ -22,34 +22,30 @@ module.exports = {
 		browser: true,
 	},
 	rules: {
-		'prettier/prettier': [
-			'error',
-			{
-				trailingComma: 'all',
-				semi: false,
-				singleQuote: true,
-				bracketSpacing: true,
-				useTabs: true,
-			},
-		],
+		// we use prettier's indentation instead of eslint's bcs it handles the .astro files better
+		indent: 'off',
+		'no-octal-escape': 'off',
 		quotes: isProductionLinting
 			? ['error', 'single', { avoidEscape: true }]
 			: 'off',
-		indent: isProductionLinting ? ['warn', 'tab'] : 'off',
 		'no-mixed-spaces-and-tabs': isProductionLinting ? 'error' : 'off',
 
 		'no-console': isProductionLinting ? 'error' : 'off',
 		'no-debugger': isProductionLinting ? 'error' : 'off',
 
 		'no-unused-vars': 'off',
-		'@typescript-eslint/no-unused-vars': isProductionLinting ? 'error' : 'off',
+		'@typescript-eslint/no-unused-vars': isProductionLinting
+			? 'error'
+			: 'off',
 		'no-unused-expressions': isProductionLinting ? 'error' : 'off',
 
 		'@typescript-eslint/interface-name-prefix': 'off',
 		'@typescript-eslint/explicit-function-return-type': 'off',
 		'@typescript-eslint/explicit-module-boundary-types': 'off',
 		'@typescript-eslint/no-explicit-any': 'off',
-		'@typescript-eslint/ban-ts-comment': isProductionLinting ? 'error' : 'off',
+		'@typescript-eslint/ban-ts-comment': isProductionLinting
+			? 'error'
+			: 'off',
 
 		// the rule below still does not cover the cases of awaiting in 'for await...of' loops
 		'no-await-in-loop': 'error',
@@ -79,4 +75,4 @@ module.exports = {
 			},
 		},
 	],
-}
+};

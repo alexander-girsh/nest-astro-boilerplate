@@ -1,34 +1,34 @@
-import { IsBoolean, IsDefined, IsInt, IsString } from 'class-validator'
+import { IsBoolean, IsDefined, IsInt, IsString } from 'class-validator';
 
 export class DatabaseConfig {
 	@IsString()
 	@IsDefined()
-	public readonly PG_HOST!: string
+	public readonly PG_HOST!: string;
 	@IsInt()
 	@IsDefined()
-	public readonly PG_PORT!: number
+	public readonly PG_PORT!: number;
 	@IsString()
 	@IsDefined()
-	public readonly PG_DATABASE!: string
+	public readonly PG_DATABASE!: string;
 	@IsString()
 	@IsDefined()
-	public readonly PG_USERNAME!: string
+	public readonly PG_USERNAME!: string;
 	@IsString()
 	@IsDefined()
-	public readonly PG_PASSWORD!: string
+	public readonly PG_PASSWORD!: string;
 	@IsBoolean()
 	@IsDefined()
-	public readonly PG_SSL_MODE_OFF!: boolean
+	public readonly PG_SSL_MODE_OFF!: boolean;
 	@IsInt()
 	@IsDefined()
-	public readonly RECONNECTION_ATTEMPTS = 100
+	public readonly RECONNECTION_ATTEMPTS = 100;
 	@IsInt()
 	@IsDefined()
-	public readonly RECONNECTION_DELAY = 500
+	public readonly RECONNECTION_DELAY = 500;
 	@IsInt()
 	@IsDefined()
-	public readonly DB_TRANSACTIONS_RETRIES_LIMIT = 10
+	public readonly DB_TRANSACTIONS_RETRIES_LIMIT = 10;
 	@IsBoolean()
 	@IsDefined()
-	public readonly PG_POOL_QUERIES_VERBOSE_MODE = false
+	public readonly PG_POOL_QUERIES_VERBOSE_MODE = false;
 }

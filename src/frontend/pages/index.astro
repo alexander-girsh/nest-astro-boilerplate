@@ -1,5 +1,5 @@
 ---
-import { AppRequestDTO, AppResponseDTO } from 'backend/modules/dto/app.dto'
+import { AppRequestDTO, AppResponseDTO } from 'backend/modules/dto/app.dto';
 
 const typedFetch = <
 	REQ_DTO extends Record<string, any>,
@@ -14,13 +14,13 @@ const typedFetch = <
 			'Content-Type': 'application/json',
 		},
 		body: JSON.stringify(payload),
-	}).then((r) => r.json())
-}
+	}).then((r) => r.json());
+};
 
 const exampleResponse = await typedFetch<AppRequestDTO, AppResponseDTO>(
 	`http://localhost:${process.env.BACKEND_PORT}/examplePost`,
 	{ filter: { keyword: 'example' } },
-)
+);
 ---
 
 <html lang="en">

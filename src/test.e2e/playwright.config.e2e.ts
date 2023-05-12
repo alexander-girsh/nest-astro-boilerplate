@@ -1,9 +1,9 @@
-import path from 'node:path'
+import path from 'node:path';
 
-import { defineConfig, devices } from '@playwright/test'
-import DotEnv from 'dotenv'
+import { defineConfig, devices } from '@playwright/test';
+import DotEnv from 'dotenv';
 
-DotEnv.config({ path: path.resolve(process.cwd(), './.env/.env.e2e') })
+DotEnv.config({ path: path.resolve(process.cwd(), './.env/.env.e2e') });
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -75,4 +75,4 @@ export default defineConfig({
 		port: process.env.BACKEND_PORT as unknown as number,
 		timeout: 3000, // ms
 	},
-})
+});

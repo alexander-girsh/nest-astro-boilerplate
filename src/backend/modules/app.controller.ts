@@ -1,7 +1,7 @@
-import { Body, Controller, Get, Post } from '@nestjs/common'
+import { Body, Controller, Get, Post } from '@nestjs/common';
 
-import { AppService } from './app.service.js'
-import { AppRequestDTO, AppResponseDTO } from './dto/app.dto.js'
+import { AppService } from './app.service.js';
+import { AppRequestDTO, AppResponseDTO } from './dto/app.dto.js';
 
 @Controller()
 export class AppController {
@@ -9,7 +9,7 @@ export class AppController {
 
 	@Get()
 	getHello() {
-		return this.appService.getHello()
+		return this.appService.getHello();
 	}
 
 	@Post('/examplePost')
@@ -17,6 +17,6 @@ export class AppController {
 		return {
 			items: [{ title: '12345' }],
 			applied: { filter },
-		}
+		};
 	}
 }

@@ -1,6 +1,6 @@
-import { Module } from '@nestjs/common'
+import { Module } from '@nestjs/common';
 
-import { DBService } from './database.service.js'
+import { DBService } from './database.service.js';
 
 @Module({
 	providers: [DBService],
